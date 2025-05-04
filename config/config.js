@@ -3,10 +3,11 @@ const mysql = require("mysql2");
 
 // Configuración de la conexión
 const db = mysql.createConnection({
-    host: "localhost",      // Cambia esto si usas otro servidor
-    user: "root",           // Usuario de la BD
-    password: "123456",           // Contraseña (déjalo vacío si no tienes)
-    database: "delivery_app" // Nombre de tu BD
+    host: process.env.MYSQLHOST,
+    user: process.env.MYSQLUSER,
+    password: process.env.MYSQLPASSWORD,
+    database: process.env.MYSQLDATABASE,
+    port: process.env.MYSQLPORT
 });
 
 // Conectar a la base de datos
