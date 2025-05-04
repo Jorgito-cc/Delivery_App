@@ -1,14 +1,18 @@
-require('dotenv').config({ path: '.env' }); // Cargar variables desde archivo
+// Cargar variables del entorno desde .env
+require('dotenv').config();
 
 const express = require('express');
 const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
-const db = require('./config/config'); // conexión a MySQL
 
+// Inicialización
 const app = express();
 const server = http.createServer(app);
+
+// Puerto desde .env o 3000 por defecto
 const port = process.env.PORT || 3000;
+app.set('port', port);
 
 // Middlewares
 app.use(logger('dev'));
@@ -21,29 +25,21 @@ app.use(cors({
 }));
 
 // Rutas
-const userRoutes = require("./routes/user.Routes");
-app.use("/api/users", userRoutes);
+const userRoutes = require('./routes/user.Routes');
+app.use('/api/users', userRoutes);
 
 // Ruta raíz
 app.get('/', (req, res) => {
   res.send('Ruta para raíz backend');
 });
 
-// Manejo de errores
+// Manejo de errores generales
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).send(err.stack);
 });
 
-// Conexión a la base de datos y luego levantar el servidor
-db.connect((err) => {
-  if (err) {
-    console.error("❌ Error al conectar a MySQL:", err);
-    process.exit(1);
-  }
-  console.log("✅ Conexión exitosa a la base de datos");
-
-  server.listen(port, () => {
-    console.log(`🚀 Server running at http://localhost:${port}`);
-  });
+// Iniciar servidor
+server.listen(port, () => {
+  console.log(`✅ Server running at http://localhost:${port}`);
 });
