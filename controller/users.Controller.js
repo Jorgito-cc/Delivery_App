@@ -29,7 +29,7 @@ return res.status(501).json({
       }
       
       // Si todo sale bien, retorno una respuesta con éxito
-      return res.status(201).json({
+      return res.status(200).json({
         success: true,
         message: "El registro se realizó correctamente",
         data: data, // Aquí se devuelve el ID del nuevo usuario
