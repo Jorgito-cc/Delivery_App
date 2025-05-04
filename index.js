@@ -5,7 +5,6 @@ const cors = require('cors');
 
 const app = express();
 const server = http.createServer(app);
-require('dotenv').config({ path: '.env.railway' });
 
 // Definir el puerto fijo
 const port = process.env.PORT || 3000;
