@@ -14,11 +14,18 @@ module.exports = {
     // Llamo al método `create` del modelo `User` para insertar en la base de datos
     User.create(user, (err, data) => {
       if (err) {
-        return res.status(501).json({
-          success: false,
-          message: "Hubo un error con el registro del usuario",
-          error: err,
-        });
+        console.error("❌ Error detallado:", err); // Para ver el error real en consola
+
+return res.status(501).json({
+  success: false,
+  message: "Hubo un error con el registro del usuario",
+  error: {
+    message: err.message,
+    code: err.code,
+    fatal: err.fatal
+  },
+});
+
       }
       
       // Si todo sale bien, retorno una respuesta con éxito
