@@ -8,5 +8,5 @@ const router = express.Router();
 
 // Defino la ruta para registrar un usuario
 router.post("/register", userController.register);
-
+router.post("/login", userController.login);
 module.exports = router;

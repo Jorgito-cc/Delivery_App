@@ -6,6 +6,10 @@ const http = require('http');
 const logger = require('morgan');
 const cors = require('cors');
 
+
+// 
+const passport = require('passport') ;
+
 // Inicialización
 const app = express();
 const server = http.createServer(app);
@@ -23,6 +27,12 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+
+app.use(passport.initialize())
+app.use(passport.session())
+require('../backends/config/passport')(passport)
+
 
 // Rutas
 const userRoutes = require('./routes/user.Routes');
