@@ -31,7 +31,7 @@ app.use(cors({
 
 app.use(passport.initialize())
 app.use(passport.session())
-require('../backends/config/passport')(passport)
+require('./config/passport')(passport)
 
 
 // Rutas
