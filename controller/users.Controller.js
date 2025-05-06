@@ -8,7 +8,9 @@ const User = require("../models/user.model"); // Importa el modelo de usuario
 
 
 
-const bcrypt = require('bcrypt');
+//const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
+
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
 

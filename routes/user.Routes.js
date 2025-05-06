@@ -6,6 +6,7 @@ const userController = require("../controller/users.Controller"); // Importa el 
 
 const router = express.Router();
 
+//rutas 
 // Defino la ruta para registrar un usuario
 router.post("/register", userController.register);
 router.post("/login", userController.login);

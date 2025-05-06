@@ -2,9 +2,9 @@
 
 const db = require('../config/config'); // Importa la conexión a la base de datos
 
-//
-const bcrypt = require('bcrypt')
-
+////const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
+ //vxvxcv   
 
 // Creo un objeto User que contendrá los métodos para interactuar con la base de datos
 const User = {};
@@ -99,8 +99,8 @@ User.create = async  (user, result) => {
         user.lastname,// Apellido
         user.phone,   // Teléfono
        // user.password,// Contraseña (sin hashear, en producción se debe encriptar)
+         hash,
         user.image ,
-        hash,
         new Date(),   // Fecha de creación
         new Date()    // Fecha de actualización
     ];
