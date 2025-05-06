@@ -98,7 +98,7 @@ User.create = async  (user, result) => {
         user.name,    // Nombre
         user.lastname,// Apellido
         user.phone,   // Teléfono
-        user.password,// Contraseña (sin hashear, en producción se debe encriptar)
+       // user.password,// Contraseña (sin hashear, en producción se debe encriptar)
         user.image ,
         hash,
         new Date(),   // Fecha de creación
